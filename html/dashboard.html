@@ -1,1 +1,650 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <title>แผงควบคุม</title>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+     
+  
+        /* แถบโลโก้และค้นหา */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
 
+        .navbar img {
+            width: 30px; /* ขนาดโลโก้ */
+        }
+
+        .navbar .search-icon {
+            font-size: 19px;
+            color: #333;
+            margin-right: 40px;
+        }
+
+        /* เนื้อหาแผงควบคุม */
+        .content {
+            margin-top: 80px; /* เว้นพื้นที่ด้านบนสำหรับ navbar */
+            padding: 20px;
+        }
+
+        .card {
+    background-color: #E22427;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 19px; /* ขนาดตัวอักษรเล็กลง */
+    width: 90%; /* ขนาดการ์ดเล็กลง */
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative; /* ทำให้เอฟเฟกต์คลื่นอยู่ภายในการ์ด */
+    overflow: hidden; /* ซ่อนส่วนเกินของคลื่น */
+}
+
+  .card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    transform: translateY(50%); /* ย้ายคลื่นให้ปรากฏขึ้นจากด้านล่าง */
+}
+.card h1 {
+    font-size: 25px; /* ขนาดตัวเลขเล็กลง */
+    margin: -3px 0;
+}
+
+.card p {
+    font-size: 13px; /* ขนาดคำอธิบายเล็กลง */
+    margin: 6px 0;
+    opacity: 0.7; /* ทำให้สีของข้อความใสขึ้น */
+}
+
+        /* เมนูด้านล่าง */
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .menu a i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+       
+.withdraw-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.withdraw-button {
+    background-color: #ffffff;
+    color: #999;
+    padding: 20px;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.withdraw-button i {
+    font-size: 32px;
+    color: #999;
+}
+
+.withdraw-text {
+    color: #E22427;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.order-list {
+    text-align: left;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.order-list h3 {
+    margin-top: 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.order-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0; /* เส้นแบ่งระหว่างรายการ */
+    font-size: 13px;
+    color: #555;
+}
+
+.order-list li:last-child {
+    border-bottom: none; /* ไม่มีเส้นแบ่งในรายการสุดท้าย */
+}
+ 
+/* กล่องโต้ตอบ (Modal) */
+.modal {
+    display: none; /* ซ่อนในตอนแรก */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.submit-button {
+    background-color: #E22427;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    margin-top: 15px;
+    font-family: 'Kanit', sans-serif;
+
+}
+
+.submit-button:hover {
+    background-color: #d11f20;
+}
+
+input[type="text"], textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Kanit', sans-serif;
+}
+  
+  /* สไตล์สำหรับส่วนผลิตภัณฑ์ */
+.product-section {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.product-section h3 {
+    margin-top: 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.product-empty {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.product-empty i {
+    font-size: 24px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.add-product-button {
+    background-color: #E22427;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.add-product-button:hover {
+    background-color: #d11f20;
+}
+
+/* สไตล์สำหรับส่วนร้านค้า */
+.store-section {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.store-section h3 {
+    margin-top: 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.store-description {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 20px;
+}
+
+.store-settings-button {
+    background-color: #fdd7d7;
+    color: #E22427;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.store-settings-button:hover {
+    background-color: #fcb3b3;
+}
+  
+/* สไตล์สำหรับส่วนการชำระเงิน */
+.payment-section {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.payment-section h3 {
+    margin-top: 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.payment-description {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 20px;
+}
+
+.payment-settings-button {
+    background-color: #fdd7d7;
+    color: #E22427;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.payment-settings-button:hover {
+    background-color: #fcb3b3;
+}
+ 
+/* ช่องว่างสีขาว */
+.spacer {
+    height: 40px;
+    background-color: #f4f4f4;
+}
+
+/* ส่วนข้อมูลติดต่อ */
+.contact-section {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.contact-logo {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.follow-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.email-input {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: 60%;
+}
+
+.follow-button {
+    background-color: #E22427;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.contact-info {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #d3d3d3;
+}
+
+/* ส่วนบัญชีของฉัน */
+.account-section {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.account-section h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.account-links {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #d3d3d3;
+}
+
+.account-links li {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.payment-icons img {
+    width: 20px;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+  
+.contact-section {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px 10px 0 0; /* ขอบโค้งเฉพาะด้านบน */
+    margin: 0;
+}
+
+.account-section {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 0 0 10px 10px; /* ขอบโค้งเฉพาะด้านล่าง */
+    margin: 0;
+    border-top: none; /* ไม่มีขอบด้านบน */
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+    <h2>แผงควบคุม</h2>
+</div>
+<div class="dashboard-container">
+    <!-- ส่วนเนื้อหาที่มีอยู่ -->
+</div>
+    <!-- แถบโลโก้และค้นหา -->
+    <div class="navbar">
+        <img src="test.jpg" alt="Logo">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+
+    <!-- เนื้อหาแผงควบคุม -->
+    <div class="content">
+        <!-- การ์ดยอดเงินและสถิติ -->
+        <div class="card">
+            <h1>999,999</h1>
+            <p>จำนวนผู้เข้าชมวันนี้</p>
+        </div>
+        <div class="card">
+            <h1>฿999.999</h1>
+            <p>รายได้ทั้งหมด</p>
+        </div>
+        <div class="card">
+    <h1>฿999,999</h1>
+    <p>ยอดเงินในกระเป๋า</p>
+</div>
+    
+      
+    <div class="withdraw-section">
+    <button class="withdraw-button" onclick="openModal()">
+        <i class="fas fa-plus"></i>
+    </button>
+    <p class="withdraw-text">ส่งคำขอถอน</p>
+</div>
+
+<!-- Modal -->
+<div id="withdrawModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>ส่งคำขอถอน</h2>
+        <form>
+            <label for="amount">จำนวน <span style="color: red;">*</span></label>
+            <input type="text" id="amount" placeholder="จำนวน" required>
+            
+            <label for="message">ข้อความ</label>
+            <textarea id="message" placeholder="ข้อความ"></textarea>
+            
+            <button type="submit" class="submit-button">ส่ง</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById("withdrawModal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("withdrawModal").style.display = "none";
+    }
+
+    // ปิด Modal เมื่อคลิกภายนอก
+    window.onclick = function(event) {
+        var modal = document.getElementById("withdrawModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<!-- ส่วนของรายการคำสั่งซื้อ -->
+<div class="order-list">
+    <h3>คำสั่งซื้อ</h3>
+    <ul>
+        <li><span>คำสั่งซื้อทั้งหมด:</span> <span>0</span></li>
+        <li><span>คำสั่งซื้อที่รอดำเนินการ:</span> <span>0</span></li>
+        <li><span>คำสั่งซื้อที่ถูกยกเลิก:</span> <span>0</span></li>
+        <li><span>คำสั่งซื้อที่ประสบความสำเร็จ:</span> <span>0</span></li>
+    </ul>
+</div>
+  
+  <!-- ส่วนผลิตภัณฑ์ -->
+<div class="product-section">
+    <h3>ผลิตภัณฑ์</h3>
+    <div class="product-list">
+        <p class="product-empty"><i class="fas fa-frown"></i> ไม่พบสิ่งใด</p>
+        <a href="ok2.html">
+    <button class="add-product-button">เพิ่มผลิตภัณฑ์ใหม่</button>
+</a>    </div>
+</div>
+
+<!-- ส่วนร้านค้า -->
+<div class="store-section">
+    <h3>ร้านค้า</h3>
+    <p class="store-description">จัดการและจัดระเบียบร้านค้าของคุณ</p>
+    <a href="setting.html">
+    <button class="store-settings-button">ไปที่การตั้งค่า</button>
+    </a>
+</div>
+  
+  <!-- ส่วนการชำระเงิน -->
+<div class="payment-section">
+    <h3>การชำระเงิน</h3>
+    <p class="payment-description">กำหนดค่าวิธีการชำระเงินของคุณ</p>
+    <a href="profile.html">
+    <button class="payment-settings-button">กำหนดค่าทันที</button>
+    </a>
+</div>
+  
+<!-- เว้นระยะช่องว่างสีขาว -->
+<div class="spacer"></div>
+
+<!-- ส่วนข้อมูลติดต่อ -->
+<div class="contact-section">
+    <img src="your-logo-url.png" alt="Logo" class="contact-logo">
+    <h3>Krisshop</h3>
+    <div class="follow-section">
+        <input type="email" placeholder="ที่อยู่อีเมลของคุณ" class="email-input">
+        <button class="follow-button">ติดตาม</button>
+    </div>
+    <h4>ข้อมูลติดต่อ</h4>
+    <p class="contact-info">
+        ที่อยู่: ที่อยู่ เขตพญาไท 
+    </p>
+</div>
+
+<!-- ส่วนบัญชีของฉัน -->
+<div class="account-section">
+    <h4>บัญชีของฉัน</h4>
+    <ul class="account-links">
+        <li>ออกจากระบบ</li>
+        <li>ประวัติการสั่งซื้อ</li>
+        <li>สิ่งที่อยากได้ของฉัน</li>
+        <li>เป็นพันธมิตรในเครือ</li>
+    </ul>
+    <div class="payment-icons">
+        <img src="icon-ideal.png" alt="Ideal">
+        <img src="icon-paypal.png" alt="PayPal">
+        <img src="icon-visa.png" alt="Visa">
+        <img src="icon-mastercard.png" alt="MasterCard">
+        <img src="icon-maestro.png" alt="Maestro">
+    </div>
+</div>
+    <!-- เมนูด้านล่าง -->
+    <div class="menu">
+            <a href="dashboard.html">
+                <i class="las la-home fs-20 opacity-60"></i> บ้าน
+            </a>
+            <a href="#">
+                <i class="las la-list-ul fs-20 opacity-60"></i> หมวดหมู่
+            </a>
+            <a href="shop.html">
+                <i class="las la-shopping-bag la-2x text-white"></i> สินค้า
+            </a>
+            <a href="#">
+                <i class="las la-bell fs-20 opacity-60"></i> การแจ้งเตือน
+            </a>
+            <a href="menu.html">
+                <i class="las la-user"></i> บัญชีเงินฝาก
+            </a>
+        </div>
+
+</body>
+</html>
