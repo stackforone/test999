@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เพิ่มผลิตภัณฑ์</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group input[type="file"] {
+            padding: 5px;
+        }
+        .form-group .toggle-switch {
+            display: flex;
+            align-items: center;
+        }
+        .form-group .toggle-switch input {
+            margin-right: 10px;
+        }
+        .form-group .toggle-switch label {
+            margin: 0;
+        }
+  
+        input, select, textarea {
+    font-family: 'Kanit', sans-serif; /* ใช้ฟอนต์ Kanit */
+    font-size: 12px; /* ขนาดฟอนต์ */
+    color: #333; /* สีของฟอนต์ */
+}
+  
+        input, select, textarea {
+    height : 38px;
+    width: 80%; /* กำหนดความกว้างเป็น 80% ของพื้นที่ที่มี */
+    max-width: 500px; /* จำกัดความกว้างสูงสุดที่ 500px */
+    margin: 0 auto; /* จัดกึ่งกลางระหว่างขอบซ้ายและขวา */
+    padding: 10px; /* กำหนดระยะห่างภายใน */
+    box-sizing: border-box; /* ให้ความกว้างรวมถึง padding */
+}
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+        }
+        .btn-add-more {
+            background-color: #28a745;
+            margin-top: 10px;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+        }
+        .form-group textarea {
+    resize: vertical;
+}
+  
+        .btn-save-draft {
+    background-color: #ffc107;
+}
+.btn-cancel-print {
+    background-color: #dc3545;
+}
+.btn-save-publish {
+    background-color: #28a745;
+}
+   
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .menu a i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+  
+  <div class="menu">
+            <a href="dashboard.html">
+                <i class="las la-home fs-20 opacity-60"></i> บ้าน
+            </a>
+            <a href="#">
+                <i class="las la-list-ul fs-20 opacity-60"></i> หมวดหมู่
+            </a>
+            <a href="#">
+                <i class="las la-shopping-bag la-2x text-white"></i> รถเข็น
+            </a>
+            <a href="#">
+                <i class="las la-bell fs-20 opacity-60"></i> การแจ้งเตือน
+            </a>
+            <a href="menu.html">
+                <i class=" las la-user"></i> บัญชีเงินฝาก
+            </a>
+        </div>
+
+<div class="container">
+    <h2>เพิ่มผลิตภัณฑ์ขายส่งใหม่</h2>
+
+    <div class="form-group">
+        <label for="productName">ชื่อผลิตภัณฑ์ *</label>
+        <input type="text" id="productName" placeholder="ชื่อผลิตภัณฑ์">
+    </div>
+
+    <div class="form-group">
+        <label for="category">ประเภท *</label>
+        <select id="category">
+            <option>เสื้อผ้าและแฟชั่นสำหรับผู้หญิง</option>
+            <option>อุปกรณ์อิเล็กทรอนิกส์</option>
+            <option>สินค้าอุปโภคบริโภค</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="brand">ยี่ห้อ</label>
+        <input type="text" id="brand" placeholder="เลือกยี่ห้อ">
+    </div>
+
+    <div class="form-group">
+        <label for="unit">หน่วย</label>
+        <input type="text" id="unit" placeholder="หน่วย (เช่น KG, Pc เป็นต้น)">
+    </div>
+
+    <div class="form-group">
+        <label for="minQuantity">ปริมาณการซื้อขั้นต่ำ *</label>
+        <input type="number" id="minQuantity" value="1">
+    </div>
+
+    <div class="form-group">
+        <label for="tags">แท็ก *</label>
+        <textarea id="tags" placeholder="พิมพ์และกด Enter เพื่อเพิ่มแท็ก"></textarea>
+        <small>ใช้สำหรับการค้นหา ป้อนคำเหล่านั้นเพื่อให้ลูกค้าสามารถค้นหาผลิตภัณฑ์นี้ได้</small>
+    </div>
+
+    <div class="form-group">
+        <label for="barcode">บาร์โค้ด</label>
+        <input type="text" id="barcode" placeholder="บาร์โค้ด">
+    </div>
+
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="refundable">
+        <label for="refundable">คืนเงินได้</label>
+    </div>
+
+    <div class="form-group">
+        <label>รูปภาพสินค้า</label>
+        <input type="file" accept="image/*">
+        <small>รูปภาพเหล่านี้สามารถมองเห็นได้ในแกลเลอรี</small>
+    </div>
+
+    <div class="form-group">
+        <label for="videoProvider">ผู้ให้บริการวิดีโอ</label>
+        <select id="videoProvider">
+            <option>Youtube</option>
+            <option>Vimeo</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="videoLink">ลิงค์วิดีโอ</label>
+        <input type="text" id="videoLink" placeholder="ลิงค์วิดีโอ">
+    </div>
+
+    <h2>ราคาสินค้า + สต๊อก</h2>
+
+    <div class="form-group">
+        <label for="unitPrice">ราคาต่อหน่วย *</label>
+        <input type="number" id="unitPrice" value="0">
+    </div>
+
+    <div class="form-group">
+        <label for="quantity">ปริมาณ *</label>
+        <input type="number" id="quantity" value="0">
+    </div>
+
+    <div class="form-group">
+        <label for="sku">SKU</label>
+        <input type="text" id="sku" placeholder="SKU">
+    </div>
+
+    <h3>ราคาขายส่ง</h3>
+    <div class="form-group">
+        <input type="number" placeholder="จำนวน">
+        <input type="number" placeholder="Max">
+        <input type="number" placeholder="ราคาต่อชิ้น">
+        <button class="btn btn-delete">X</button>
+    </div>
+
+    <button class="btn btn-add-more">Add More</button>
+</div>
+
+    <div class="container">
+    <h2>รายละเอียดสินค้า</h2>
+
+    <div class="form-group">
+        <label for="description">คำอธิบาย</label>
+        <textarea id="description" placeholder="คำอธิบายสินค้า" rows="5"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>ภาพ Meta</label>
+        <input type="file" accept="image/*">
+    </div>
+
+    <h3>การกำหนดค่าการจัดส่ง</h3>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="freeShipping">
+        <label for="freeShipping">จัดส่งฟรี</label>
+    </div>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="fixedRate">
+        <label for="fixedRate">อัตราคงที่</label>
+    </div>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="multiProduct">
+        <label for="multiProduct">มันเป็นผลิตภัณฑ์หลายรายการ</label>
+    </div>
+
+    <h3>เตือนหุ้นต่ำ</h3>
+    <div class="form-group">
+        <label for="lowStock">ปริมาณ</label>
+        <input type="number" id="lowStock" value="1">
+    </div>
+
+    <h3>สถานะการมองเห็นสินค้าคงคลัง</h3>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="showStock">
+        <label for="showStock">แสดงปริมาณสินค้าคงคลัง</label>
+    </div>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="showStockMessage">
+        <label for="showStockMessage">แสดงสินค้าคงคลังด้วยข้อความเท่านั้น</label>
+    </div>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="animalLeather">
+        <label for="animalLeather">หนังสัตว์</label>
+    </div>
+
+    <h3>ข้อกำหนด PDF</h3>
+    <div class="form-group">
+        <label>ข้อกำหนด PDF</label>
+        <input type="file" accept=".pdf">
+    </div>
+
+    <h3>เมตาแท็ก SEO</h3>
+    <div class="form-group">
+        <label for="metaName">ชื่อเมตา</label>
+        <input type="text" id="metaName" placeholder="ชื่อเมตา">
+    </div>
+    <div class="form-group">
+        <label for="metaDescription">คำอธิบาย</label>
+        <textarea id="metaDescription" placeholder="คำอธิบายเมตาแท็ก" rows="3"></textarea>
+    </div>
+</div>
+     <div class="container">
+    <h3>เก็บเงินปลายทาง</h3>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="codStatus">
+        <label for="codStatus">สถานะ</label>
+    </div>
+
+    <h3>แนะนำ</h3>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="recommended">
+        <label for="recommended">สถานะ</label>
+    </div>
+
+    <h3>ข้อตกลงวันนี้</h3>
+    <div class="form-group toggle-switch">
+        <input type="checkbox" id="todayDeal">
+        <label for="todayDeal">สถานะ</label>
+    </div>
+
+    <h3>การซื้อขายสายฟ้า</h3>
+    <div class="form-group">
+        <label for="flashSale">เพิ่มแฟลช</label>
+        <select id="flashSale">
+            <option>Choose Flash Title</option>
+            <!-- ใส่ตัวเลือกเพิ่มเติมตามต้องการ -->
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="discount">ส่วนลด</label>
+        <input type="number" id="discount" value="0">
+    </div>
+
+    <div class="form-group">
+        <label for="discountType">Discount Type</label>
+        <select id="discountType">
+            <option>Choose Discount Type</option>
+            <option>Percentage</option>
+            <option>Fixed Amount</option>
+        </select>
+    </div>
+
+    <h3>ประมาณเวลาจัดส่ง</h3>
+    <div class="form-group">
+        <label for="deliveryDate">วันจัดส่ง</label>
+        <input type="date" id="deliveryDate">
+    </div>
+
+    <h3>ภาษีมูลค่าเพิ่มและภาษีอากร</h3>
+    <div class="form-group">
+        <label for="tax">Tax</label>
+        <input type="number" id="tax" value="0">
+    </div>
+
+    <div class="form-group">
+        <label for="taxBand">แบน</label>
+        <select id="taxBand">
+            <option>Choose Tax Band</option>
+            <!-- ใส่ตัวเลือกเพิ่มเติมตามต้องการ -->
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-save-draft">บันทึกเป็นร่าง</button>
+        <button class="btn btn-cancel-print">บันทึกและยกเลิกส่งพิมพ์</button>
+        <button class="btn btn-save-publish">บันทึกและเผยแพร่</button>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าสินค้า</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .header-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .filter-icon {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+        }
+        .filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .filter label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .filter select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            color: #888;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+        }
+        .filter select:focus {
+            outline: none;
+            border-color: #999;
+        }
+        .filter-item {
+            flex: 1;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            height: 240px;
+            padding: 7px;
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .product-card h3 {
+    font-size: 13px; /* ปรับขนาดตามต้องการ */
+    font-weight: 600; /* ปรับน้ำหนักตามความเหมาะสม */
+    color: #333;
+    margin: 8px 0;
+    height: 40px;
+    overflow: hidden;
+    margin-top : -10px;
+    -webkit-font-smoothing: antialiased; /* ทำให้ฟอนต์ดูนุ่มนวลขึ้นบน iOS */
+}
+        .product-card .price {
+            font-size: 16px;
+            color: #ff3b30;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: -12px;
+        }
+        .product-card .rating {
+            font-size: 12px;
+            color: #ffa500;
+            margin-bottom: 10px;
+            margin-top: -12px;
+        }
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .actions button {
+            border: none;
+            background-color: #eee;
+            padding: 9px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            width: 32px;
+            height: 32px;
+            margin-top: -23px;
+        }
+        .actions button i {
+            color: #333;
+        }
+        
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .menu a i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+         
+        .filter select {
+    font-family: 'Kanit', sans-serif;
+}
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+            <a href="dashboard.html">
+                <i class="las la-home fs-20 opacity-60"></i> บ้าน
+            </a>
+            <a href="#">
+                <i class="las la-list-ul fs-20 opacity-60"></i> หมวดหมู่
+            </a>
+            <a href="html/shop.html">
+                <i class="las la-shopping-bag la-2x text-white"></i> สินค้า
+            </a>
+            <a href="#">
+                <i class="las la-bell fs-20 opacity-60"></i> การแจ้งเตือน
+            </a>
+            <a href="go.html">
+                <i class=" las la-user"></i> บัญชีเงินฝาก
+            </a>
+        </div>
+  
+    <div class="header-container">
+        <div class="header-title">เสื้อผ้าและแฟชั่น</div>
+        <i class="fas fa-filter filter-icon"></i>
+    </div>
+
+    <div class="filter">
+        <div class="filter-item">
+            <label for="brand">แบรนด์</label>
+            <select id="brand">
+                <option>ทุกยี่ห้อ</option>
+                <option>Adidas</option>
+                <option>Nike</option>
+                <option>Alisa</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label for="sort">เรียงตาม</label>
+            <select id="sort">
+                <option>ใหม่ล่าสุด</option>
+                <option>ราคาต่ำสุด</option>
+                <option>ราคาสูงสุด</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <div class="price">฿999.00</div>
+            <div class="rating">★★★★☆</div>
+            <h3>ยังไม่พร้อม</h3>
+            <div class="actions">
+                <button><i class="fas fa-heart"></i></button>
+                <button><i class="fas fa-share-alt"></i></button>
+                <button><i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <div class="price">฿999.99</div>
+            <div class="rating">★★★☆☆</div>
+            <h3>ยังไม่พร้อม</h3>
+            <div class="actions">
+                <button><i class="fas fa-heart"></i></button>
+                <button><i class="fas fa-share-alt"></i></button>
+                <button><i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <div class="price">฿999.00</div>
+            <div class="rating">★★★★☆</div>
+            <h3>ยังไม่พร้อม</h3>
+            <div class="actions">
+                <button><i class="fas fa-heart"></i></button>
+                <button><i class="fas fa-share-alt"></i></button>
+                <button><i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <div class="price">฿999.00</div>
+            <div class="rating">★★★★☆</div>
+            <h3>ยังไม่พร้อม</h3>
+            <div class="actions">
+                <button><i class="fas fa-heart"></i></button>
+                <button><i class="fas fa-share-alt"></i></button>
+                <button><i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <div class="price">฿999.00</div>
+            <div class="rating">★★★★☆</div>
+            <h3>ยังไม่พร้อม</h3>
+            <div class="actions">
+                <button><i class="fas fa-heart"></i></button>
+                <button><i class="fas fa-share-alt"></i></button>
+                <button><i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <div class="price">฿999.00</div>
+            <div class="rating">★★★★☆</div>
+            <h3>ยังไม่พร้อม</h3>
+            <div class="actions">
+                <button><i class="fas fa-heart"></i></button>
+                <button><i class="fas fa-share-alt"></i></button>
+                <button><i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- เพิ่มสินค้าเพิ่มเติมตามต้องการ -->
+    </div>
+
+</body>
+</html>

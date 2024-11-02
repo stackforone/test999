@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กระเป๋าเงิน</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+      
+  
+  
+        .balance-container {
+            background-color: #ff0000;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 40px;
+            width: 70%;
+        }
+        .balance-container h2 {
+            font-size: 25px;
+            margin: 10px 0;
+        }
+  
+        .balance-container p {
+    font-size: 13px;
+    position: relative;
+    top: -16px; /* เลื่อนขึ้น */
+    color: rgba(255, 255, 255, 0.7); /* สีขาวโปร่งใส 70% */
+}
+  
+        .top-up-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            background-color: #fff;
+            width: 70%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: -20px;
+        }
+        .top-up-button .circle {
+            background-color: #757575;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        .top-up-button p {
+            margin-top: 10px;
+            color: #ff3b30;
+            font-size: 18px;
+        }
+        .history-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 7px;
+            width: 84%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+            margin-top: -20px;
+        }
+        .history-container h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .no-data {
+            color: #757575;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .no-data-icon {
+            font-size: 50px;
+            color: #757575;
+        }
+  
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .menu a i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+  
+  
+  
+    <div class="menu">
+            <a href="dashboard.html">
+                <i class="las la-home fs-20 opacity-60"></i> บ้าน
+            </a>
+            <a href="#">
+                <i class="las la-list-ul fs-20 opacity-60"></i> หมวดหมู่
+            </a>
+            <a href="#">
+                <i class="las la-shopping-bag la-2x text-white"></i> รถเข็น
+            </a>
+            <a href="#">
+                <i class="las la-bell fs-20 opacity-60"></i> การแจ้งเตือน
+            </a>
+            <a href="go.html">
+                <i class=" las la-user"></i> บัญชีเงินฝาก
+            </a>
+        </div>
+  
+    <div class="balance-container">
+        <div class="icon"></div>
+        <h2>฿69.00</h2>
+        <p>ยอดเงินในกระเป๋า</p>
+    </div>
+
+    <div class="top-up-button">
+        <div class="circle">+</div>
+        <p>ส่งคำขอถอน</p>
+    </div>
+
+    <div class="history-container">
+        <h3>ถอนประวัติการร้องขอ</h3>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>วันที่</th>
+                <th>จำนวนเงิน</th>
+                <th>ประเภทการชำระเงิน</th>
+            </tr>
+        </table>
+        <div class="no-data">
+            <div class="no-data-icon">?</div>
+            ไม่พบสิ่งใด
+        </div>
+    </div>
+
+</body>
+</html>

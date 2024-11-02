@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เมนู</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .menu2 {
+            width: 250px;
+            background-color: white;
+            border-right: 1px solid #ddd;
+            position: fixed;
+            height: 620px;
+            overflow-y: auto;
+        }
+
+        .menu-item {
+    padding: 11px 18px;
+  /*  border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* จัดให้ข้อความและไอคอนชิดซ้าย */
+    font-size: 13px;
+    text-decoration: none; /* ลบเส้นใต้ */
+}
+
+.menu-item i {
+    margin-right: 10px; /* ปรับระยะห่างระหว่างไอคอนและข้อความ */
+    font-size: 17px;
+}
+
+        .menu-item:hover {
+            background-color: #f1f1f1;
+            text-decoration: none; /* ลบเส้นใต้เมื่อ hover */
+        }
+
+        .menu-item.active {
+            background-color: #ffe1dd;
+        }
+
+        .menu-item i {
+            margin-right: 10px;
+        }
+
+        .submenu {
+            display: none;
+            background-color: #f9f9f9;
+        }
+
+        .submenu .menu-item {
+            padding-left: 40px;
+        }
+
+        .menu-item.active + .submenu {
+            display: block;
+        }
+
+        .logout {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: white;
+            border-top: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .summary-section {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 120px; /* เพิ่มระยะห่างด้านล่างเพื่อไม่ให้ทับเมนู */
+}
+
+        .summary-section button {
+            background-color: #ff4b2b;
+            color: white;
+            border: none;
+            padding: 7px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .summary-section .p {
+          font-size: 8px;
+        }
+        .summary-section button:hover {
+            background-color: #ff6b4b;
+        }
+ 
+        button {
+    background-color: #ff4b2b;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px; /* ปรับขนาดฟอนต์ตรงนี้ */
+    font-family: 'Kanit', sans-serif; /* เพิ่มฟอนต์ที่ต้องการใช้ */
+}
+  
+  .menu {
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .menu a i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+  
+        .menu-item i.fa-chevron-down {
+    margin-left: 106px; /* เพิ่มระยะห่างระหว่างข้อความและไอคอน */
+    font-size: 10px;
+}
+
+        .submenu .menu-item {
+    padding: 11px 18px; /* กำหนด padding ให้เหมือนกับปุ่มอื่น */
+    font-size: 13px; /* ปรับขนาดฟอนต์ให้สอดคล้องกัน */
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.submenu a.menu-item:hover {
+    background-color: #f1f1f1; /* เพิ่มสีพื้นหลังเมื่อ hover */
+    color: #333;
+    text-decoration: none;
+}
+  
+     
+    </style>
+</head>
+<body>
+
+  
+       <div class="menu">
+            <a href="dashboard.html">
+                <i class="las la-home fs-20 opacity-60"></i> บ้าน
+            </a>
+            <a href="#">
+                <i class="las la-list-ul fs-20 opacity-60"></i> หมวดหมู่
+            </a>
+            <a href="#">
+                <i class="las la-shopping-bag la-2x text-white"></i> รถเข็น
+            </a>
+            <a href="#">
+                <i class="las la-bell fs-20 opacity-60"></i> การแจ้งเตือน
+            </a>
+            <a href="go.html">
+                <i class=" las la-user"></i> บัญชีเงินฝาก
+            </a>
+        </div>
+  
+<div class="menu2">
+    <div class="menu-item active">
+        <i class="las la-home"></i> แผงควบคุม
+    </div>
+    <div class="menu-item">
+        <i class="las la-gem"></i> ผลิตภัณฑ์ <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="submenu">
+         <a href="okk.html" class="menu-item">
+    <i class="las la-gem"></i> ผลิตภัณฑ์
+</a>
+        <a href="ok2.html" class="menu-item"><i 
+    <i class="las la-upload"></i> อัปโหลดผลิตภัณฑ์
+</a>
+        <div class="menu-item"><i class="las la-truck"></i> ผลิตภัณฑ์ขายส่ง</div>
+        <div class="menu-item"><i class="las la-file-upload"></i> ไฟล์ที่อัปโหลด</div>
+    </div>
+    <div class="menu-item">
+        <i class="las la-shopping-cart"></i> คำสั่งซื้อ <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="submenu">
+        <div class="menu-item"><i class="las la-clock"></i> รอดำเนินการ</div>
+        <div class="menu-item"><i class="las la-check-circle"></i> ได้รับการยืนยัน</div>
+    </div>
+    <div class="submenu">
+        <div class="menu-item"><i class="las la-gem"></i> ผลิตภัณฑ์</div>
+        <div class="menu-item"><i class="las la-upload"></i> อัปโหลดผลิตภัณฑ์</div>
+        <div class="menu-item"><i class="las la-truck"></i> ผลิตภัณฑ์ขายส่ง</div>
+        <div class="menu-item"><i class="las la-file-upload"></i> ไฟล์ที่อัปโหลด</div>
+    </div>
+    <div class="menu-item">
+      <a href="setting.html"<i class="las la-store"></i> การตั้งค่าร้านค้า </a>
+    </div>
+    <div class="menu-item">
+        <i class="las la-wallet"></i> กระเป๋าเงิน <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="submenu">
+        <a href="money.html">
+    <div class="menu-item"><i class="las la-wallet"></i> กระเป๋าเงินของฉัน</div>
+</a>
+        <div class="menu-item"><i class="las la-history"></i> ประวัติการชำระเงิน</div>
+        <div class="menu-item"><i class="las la-tag"></i> คูปอง</div>
+        <div class="menu-item"><i class="las la-money-bill-alt"></i> ยอดเงินในกระเป๋า</div>
+        <div class="menu-item"><i class="las la-sync"></i> ตั๋วสนับสนุน</div>
+    </div>
+    <div class="menu-item">
+        <i class="las la-user"></i> จัดการโปรไฟล์
+    </div>
+
+    <div class="summary-section">
+        <h3>ขายจำนวน</h3>
+        <p>ยอดขายของคุณ (เดือนปัจจุบัน)</p>
+        <button>฿0.00</button>
+        <p>ขายทั้งหมด: ฿0.00</p>
+    </div>
+
+    <div class="logout">
+        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const isActive = this.classList.contains('active');
+            document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.submenu').forEach(sub => sub.style.display = 'none');
+
+            if (!isActive) {
+                this.classList.add('active');
+                const nextElement = this.nextElementSibling;
+                if (nextElement && nextElement.classList.contains('submenu')) {
+                    nextElement.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

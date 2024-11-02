@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .header img {
+            width: 40px;
+        }
+        .header select {
+            border: none;
+            font-size: 16px;
+            background-color: white;
+        }
+        .header .fas {
+            font-size: 18px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            margin: 0 0 10px;
+            font-size: 13px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        .table th {
+            background-color: #f0f0f0;
+            font-size: 14px;
+        }
+  
+        .table td {
+            background-color: #f0f0f0;
+            font-size: 13px;
+        }
+  
+        .table td:last-child {
+            color: red;
+        }
+  
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .menu a i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+  
+    <div class="menu">
+            <a href="dashboard.html">
+                <i class="las la-home fs-20 opacity-60"></i> บ้าน
+            </a>
+            <a href="#">
+                <i class="las la-list-ul fs-20 opacity-60"></i> หมวดหมู่
+            </a>
+            <a href="#">
+                <i class="las la-shopping-bag la-2x text-white"></i> รถเข็น
+            </a>
+            <a href="#">
+                <i class="las la-bell fs-20 opacity-60"></i> การแจ้งเตือน
+            </a>
+            <a href="go.html">
+                <i class=" las la-user"></i> บัญชีเงินฝาก
+            </a>
+        </div>
+  
+    <div class="header">
+        <div>
+            <select>
+                <option>thailand</option>
+            </select>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Singapore_Airlines_logo.svg/512px-Singapore_Airlines_logo.svg.png" alt="logo">
+        <div>
+            <select>
+                <option>Thai Baht ฿</option>
+            </select>
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>ผลิตภัณฑ์</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ในร้าน</th>
+                    <th>ส่วนลด</th>
+                    <th>จำนวน</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>LV1</td>
+                    <td>0.1</td>
+                    <td>฿100,000</td>
+                </tr>
+                <tr>
+                    <td>LV2</td>
+                    <td>0.2</td>
+                    <td>฿88,888</td>
+                </tr>
+                <tr>
+                    <td>LV3</td>
+                    <td>0.3</td>
+                    <td>฿9,999</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>LV4</td>
+                    <td>0.4</td>
+                    <td>฿55,000</td>
+                </tr>
+                <tr>
+                    <td>LV5</td>
+                    <td>0.5</td>
+                    <td>฿33,333</td>
+                </tr>
+                <tr>
+                    <td>LV6</td>
+                    <td>0.6</td>
+                    <td>฿1,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

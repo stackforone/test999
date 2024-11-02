@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดการโปรไฟล์</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container {
+            width: 80%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+        h2 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"], input[type="password"], input[type="email"], select {
+            width: 85%;
+            padding: 7px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        .file-upload {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .file-upload div {
+            padding: 7px;
+            border: 1px solid #ddd;
+            text-align: center;
+            flex: 1;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .file-upload div:hover {
+            background-color: #f0f0f0;
+        }
+        .add-address {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .add-address .plus {
+            font-size: 24px;
+            color: #757575;
+        }
+        .add-address p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ff3b30;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 7px;
+            background-color: #ff3b30;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'Kanit', sans-serif;
+        }
+        .button:hover {
+            background-color: #e64a19;
+        }
+  
+        input[type="text"], input[type="password"], input[type="email"], select, textarea {
+    font-family: 'Kanit', sans-serif;
+}
+  
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .menu a i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+     <div class="menu">
+            <a href="dashboard.html">
+                <i class="las la-home fs-20 opacity-60"></i> บ้าน
+            </a>
+            <a href="#">
+                <i class="las la-list-ul fs-20 opacity-60"></i> หมวดหมู่
+            </a>
+            <a href="#">
+                <i class="las la-shopping-bag la-2x text-white"></i> รถเข็น
+            </a>
+            <a href="#">
+                <i class="las la-bell fs-20 opacity-60"></i> การแจ้งเตือน
+            </a>
+            <a href="menu.html">
+                <i class=" las la-user"></i> บัญชีเงินฝาก
+            </a>
+        </div>
+  
+    <div class="container">
+        <h2>ข้อมูลพื้นฐาน</h2>
+        <label for="name">ชื่อของคุณ</label>
+        <input type="text" id="name" placeholder="คุณ ปิยะพงษ์">
+        
+        <label for="phone">โทรศัพท์ของคุณ</label>
+        <input type="text" id="phone" placeholder="โทรศัพท์ของคุณ">
+        
+        <label>ภาพถ่าย</label>
+        <div class="file-upload">
+            <div>เรียกดู</div>
+            <div>เลือกไฟล์</div>
+        </div>
+        
+        <label for="new-password">รหัสผ่านของคุณ</label>
+        <input type="password" id="new-password" placeholder="รหัสผ่านใหม่">
+        
+        <label for="confirm-password">ยืนยันรหัสผ่าน</label>
+        <input type="password" id="confirm-password" placeholder="ยืนยันรหัสผ่าน">
+    </div>
+
+    <div class="container">
+        <h2>ที่อยู่</h2>
+        <div class="add-address">
+            <div class="plus">+</div>
+            <p>เพิ่มที่อยู่ใหม่</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>เปลี่ยนอีเมลของคุณ</h2>
+        <label for="email">อีเมลของคุณ</label>
+        <input type="email" id="email" placeholder="myname@gmail.com">
+        <input type="button" value="ยืนยัน" class="button">
+    </div>
+
+    <div class="container">
+        <h2>การตั้งค่าการชำระเงิน</h2>
+        <label for="bank-name">ชื่อธนาคาร</label>
+        <select id="bank-name">
+            <option>ชื่อธนาคาร</option>
+        </select>
+        
+        <label for="bank-name">ชื่อธนาคาร</label>
+<select id="bank-name">
+    <option value="">เลือกธนาคาร</option>
+    <option value="bbl">ธนาคารกรุงเทพ (BBL)</option>
+    <option value="kbank">ธนาคารกสิกรไทย (KBank)</option>
+    <option value="scb">ธนาคารไทยพาณิชย์ (SCB)</option>
+    <option value="ktb">ธนาคารกรุงไทย (KTB)</option>
+    <option value="tmb">ธนาคารทหารไทยธนชาต (TTB)</option>
+    <option value="bay">ธนาคารกรุงศรีอยุธยา (BAY)</option>
+    <option value="gsb">ธนาคารออมสิน (GSB)</option>
+    <option value="baac">ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร (BAAC)</option>
+    <option value="cimb">ธนาคารซีไอเอ็มบี ไทย (CIMB)</option>
+    <option value="uob">ธนาคารยูโอบี (UOB)</option>
+    <option value="tisco">ธนาคารทิสโก้ (TISCO)</option>
+    <option value="kkp">ธนาคารเกียรตินาคินภัทร (KKP)</option>
+    <option value="lhbank">ธนาคารแลนด์ แอนด์ เฮ้าส์ (LH Bank)</option>
+    <option value="megabank">ธนาคารแห่งประเทศไต้หวัน (Mega Bank)</option>
+    <option value="smethai">ธนาคารเพื่อการส่งออกและนำเข้าแห่งประเทศไทย (EXIM Bank)</option>
+    <option value="icbc">ธนาคารไอซีบีซี (ICBC)</option>
+</select>
+        
+        <label for="account-number">หมายเลขบัญชีธนาคาร</label>
+        <input type="text" id="account-number" placeholder="หมายเลขบัญชีธนาคาร">
+        
+        <button class="button">อัปเดตโปรไฟล์</button>
+    </div>
+
+</body>
+</html>
